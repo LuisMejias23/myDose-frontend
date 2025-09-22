@@ -1,0 +1,20 @@
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.form-container {
+  animation: slideIn 0.8s ease-out;
+}
+
+.form-container {
+  /* ... sus estilos de animación */
+
+  background-color: rgba(255, 255, 255, 0.75); /* Blanco con 75% de opacidad */
+}
