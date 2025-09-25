@@ -4,6 +4,11 @@ import { Observable } from 'rxjs';
 import { ConsultationData } from '../interfaces/consultation-data.interface';
 
 
+interface FullConsultationData extends ConsultationData {
+  aiResponse: string;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,13 +18,12 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getMedicationRecommendation(data: ConsultationData): Observable<any> {
+  getConsultationResponse(data: ConsultationData): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/consultation`, data);
   }
   
-  saveConsultation(data: ConsultationData, recommendations: any): Observable<any> {
-    const dataToSave = { ...data, recommendations };
-    return this.http.post<any>(`${this.apiUrl}/share`, dataToSave);
+  saveConsultation(data:FullConsultationData): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/share`, data);
   }
 
   getSymptoms(): Observable<string[]> {

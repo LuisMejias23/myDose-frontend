@@ -27,14 +27,14 @@ export class FormDoseComponent {
     temperature: [''],
   });
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.dataService.getSymptoms().subscribe({
       next: (data) => {
         this.symptomsList.set(data);
       },
       error: (err) => {
         console.error('Failed to load symptoms:', err);
-      }
+      },
     });
   }
 
@@ -46,10 +46,7 @@ export class FormDoseComponent {
   resetForm() {
     this.formDose.reset();
     this.recommendations.set(null);
-
   }
-
-  
 
   onSubmit() {
     if (this.formDose.valid) {
@@ -64,19 +61,19 @@ export class FormDoseComponent {
           : undefined,
       };
 
-      this.dataService.getMedicationRecommendation(dataToSend).subscribe({
+      this.dataService.getConsultationResponse(dataToSend).subscribe({
         next: (response) => {
-          
-          this.recommendations.set(response.recommendations);
+          this.recommendations.set(response.aiResponse);
+          this.showModal.set(true);
 
-         
+         // Llamar a saveConsultation con la nueva data
+          const dataToSave = { ...dataToSend, aiResponse: response.aiResponse };
           this.dataService
-            .saveConsultation(dataToSend, response.recommendations)
+            .saveConsultation(dataToSave)
             .subscribe({
               next: (shareResponse) => {
                 const uniqueId = shareResponse.shareId;
                 this.shareUrl.set(`http://localhost:4200/share/${uniqueId}`);
-                this.showModal.set(true); // Mostrar el modal
               },
               error: (shareError) => {
                 console.error(
@@ -84,7 +81,6 @@ export class FormDoseComponent {
                   shareError
                 );
                 alert('An error occurred while saving the consultation.');
-                this.showModal.set(true); // Mostrar el modal aunque el guardado falle
               },
             });
         },
