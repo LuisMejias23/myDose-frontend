@@ -8,6 +8,10 @@ interface FullConsultationData extends ConsultationData {
   aiResponse: string;
 }
 
+interface SharedConsultationData extends FullConsultationData {
+  _id: string;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +32,10 @@ export class DataService {
 
   getSymptoms(): Observable<string[]> {
     return this.http.get<string[]>(`${this.apiUrl}/symptoms`);
+  }
+
+  getSharedConsultation(id: string): Observable<SharedConsultationData> {
+    return this.http.get<SharedConsultationData>(`${this.apiUrl}/share/${id}`);
   }
 
   

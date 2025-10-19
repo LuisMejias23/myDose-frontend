@@ -1,6 +1,6 @@
 export interface ConsultationData {
-  symptom?: string | null;
-  age?: number | null;
-  weight?: number | null;
-  temperature?: number | null;
+  symptom: string;
+  age: number;
+  weight: number;
+  temperature?: number;
 }

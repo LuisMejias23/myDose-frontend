@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 body {
-  background-image: url('assets/background.jpg');
+  /* Usar imagen externa en lugar de la local en assets/ */
+  background-image: url('https://previews.123rf.com/images/whitebearstudio1/whitebearstudio12109/whitebearstudio1210900004/173926529-pediatrics-concept-stethoscope-and-toy-on-a-light-background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
