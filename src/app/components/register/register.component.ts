@@ -18,7 +18,7 @@ export class RegisterComponent {
   private router = inject(Router);
 
   registerForm = this.formBuilder.group({
-    username: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   });
 
@@ -27,7 +27,7 @@ export class RegisterComponent {
       this.authService.register(this.registerForm.value).subscribe({
         next: (response) => {
           localStorage.setItem('token', response.token);
-          localStorage.setItem('username', response.username);
+          localStorage.setItem('email', response.email);
           this.router.navigate(['/']);
         },
         error: (err) => {

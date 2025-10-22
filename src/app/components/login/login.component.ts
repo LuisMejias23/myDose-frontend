@@ -19,7 +19,7 @@ export class LoginComponent {
   private router = inject(Router);
 
   loginForm = this.formBuilder.group({
-    username: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   });
 
@@ -28,7 +28,7 @@ export class LoginComponent {
       this.authService.login(this.loginForm.value).subscribe({
         next: (response) => {
           localStorage.setItem('token', response.token);
-          localStorage.setItem('username', response.username);
+          localStorage.setItem('userEmail', response.email);
           this.router.navigate(['/']);
         },
         error: (err) => {

@@ -12,6 +12,11 @@ interface SharedConsultationData extends FullConsultationData {
   _id: string;
 }
 
+interface EmailData {
+  subject: string;
+  body: string;
+  to: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +43,14 @@ export class DataService {
     return this.http.get<SharedConsultationData>(`${this.apiUrl}/share/${id}`);
   }
 
-  
+  sendEmail(emailData: EmailData): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/send-email`, emailData);
+  }
+
+  processConsultation(data: ConsultationData & { email?: string; sendEmail: boolean }): Observable<{ aiResponse: string; emailSent: boolean }> {
+    return this.http.post<{ aiResponse: string; emailSent: boolean }>(
+      `${this.apiUrl}/consultation`,
+      data
+    );
+  }
 }

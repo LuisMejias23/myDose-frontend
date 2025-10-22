@@ -79,7 +79,7 @@ Puedes cambiar este valor en `src/app/services/data.service.ts` o migrarlo a `sr
 Este proyecto frontend trabaja junto a un backend que expone una API REST en `/api` (por defecto el `DataService` apunta a `http://localhost:3000/api`).
 
 Notas sobre el backend:
-- El backend puede estar en un repositorio o carpeta separada. Si está en otro repositorio, clónalo junto con este frontend.
+- El backend  esta en un repositorio o carpeta separada. clónalo junto con este frontend.
 - Variables comunes que el backend podría necesitar: `PORT` (por defecto 3000), `MONGO_URI` o `DATABASE_URL`, `JWT_SECRET`, etc. Revisa la documentación del backend para valores exactos.
 - Para desarrollar localmente, inicia primero el backend (por ejemplo `npm install` y `npm start` o `node index.js` según el repo) y luego ejecuta el frontend con `ng serve`.
 
@@ -202,3 +202,5 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+

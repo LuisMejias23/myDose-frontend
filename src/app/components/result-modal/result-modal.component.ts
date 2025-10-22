@@ -1,17 +1,21 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-result-modal',
-   standalone: true,
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './result-modal.component.html',
   styleUrl: './result-modal.component.scss'
 })
 export class ResultModalComponent {
+  private dataService = inject(DataService);
+
   recommendations = input<any>(null);
   onClose = output<void>(); // Evento para cerrar el modal
   shareUrl = input<string | null>(null);
+  userEmail: string | null = localStorage.getItem('userEmail');
 
   closeModal() {
     this.onClose.emit();
@@ -23,9 +27,21 @@ export class ResultModalComponent {
   }
 
   shareOnEmail() {
-    const subject = 'Medical Recommendation';
-    const body = `Hello, here is a medical recommendation for you: ${this.shareUrl()}`;
-    window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (this.shareUrl()) {
+      const emailData = {
+        subject: 'Medical Recommendation',
+        body: `Hello, here is a medical recommendation for you: ${this.shareUrl()}`,
+        to: 'recipient@example.com', // Aquí se debe reemplazar con el destinatario real
+      };
+
+      this.dataService.sendEmail(emailData).subscribe({
+        next: () => alert('Email sent successfully!'),
+        error: (err) => {
+          console.error('Failed to send email:', err);
+          alert('An error occurred while sending the email.');
+        },
+      });
+    }
   }
 
   copyToClipboard() {
