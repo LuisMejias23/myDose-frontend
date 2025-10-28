@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = 'https://bandboxical-berneice-nonincarnated.ngrok-free.dev/api/auth';
 
   constructor(private http: HttpClient) { }
 

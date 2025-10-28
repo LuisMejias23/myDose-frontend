@@ -2,13 +2,14 @@
 
 import { Component, inject, signal } from '@angular/core'; // <-- Importe 'signal'
 import { Router, RouterLink, NavigationEnd } from '@angular/router'; // <-- Importe 'NavigationEnd'
-import { CommonModule } from '@angular/common';
+
 import { filter } from 'rxjs/operators'; // <-- Importe el operador 'filter'
+import { NotificacionesService } from '../../services/notificaciones.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -16,8 +17,10 @@ export class HeaderComponent {
 
   private router = inject(Router);
   loggedInUsername = signal<string | null>(null);
+  private notificacionesService = inject(NotificacionesService);
 
   constructor() {
+    console.log('HeaderComponent se ha cargado.');
     this.checkLoginStatus();
 
     this.router.events.pipe(
@@ -45,5 +48,10 @@ export class HeaderComponent {
     localStorage.removeItem('username'); // <-- Elimine también el nombre de usuario
     this.router.navigate(['/login']);
     this.loggedInUsername.set(null); // Actualice la señal
+  }
+
+  requestNotif(): void {
+    console.log('Intentando solicitar suscripción...');
+    this.notificacionesService.requestSubscription();
   }
 }

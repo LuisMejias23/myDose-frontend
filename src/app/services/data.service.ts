@@ -23,7 +23,7 @@ interface EmailData {
 })
 export class DataService {
 
- private apiUrl = 'http://localhost:3000/api';
+ private apiUrl = 'https://bandboxical-berneice-nonincarnated.ngrok-free.dev/api';
 
   constructor(private http: HttpClient) { }
 

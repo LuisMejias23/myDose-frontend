@@ -1,11 +1,11 @@
 import { Component, inject, input, output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-result-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './result-modal.component.html',
   styleUrl: './result-modal.component.scss'
 })
