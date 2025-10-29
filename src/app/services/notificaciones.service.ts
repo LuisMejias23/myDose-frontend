@@ -17,7 +17,7 @@ interface PushPayload {
   providedIn: 'root',
 })
 export class NotificacionesService {
-  // URL de tu backend (¡LA URL DE LOCALITUNNEL ES TEMPORAL!)
+ 
   private readonly BACKEND_URL = `${environment.backendUrl}/notifications/save-subscription`;
 
   private swPush = inject(SwPush);

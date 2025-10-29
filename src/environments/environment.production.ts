@@ -1,3 +1,5 @@
+const BACKEND_URL = process.env['NG_APP_BACKEND_URL'] || 'https://bandboxical-berneice-nonincarnated.ngrok-free.dev/api';
+
 export const environment = {
   production: true,
   
@@ -14,7 +16,7 @@ export const environment = {
   
 vapidKey:"BKdYML7XIbaVNKRK-WjSnH_gJcL0oKCRhcP6q74OmQnqGsaFLwkBd4aY2yHKIP1zYXsQVM6GcOTaVb_XCpXbtDY",
 
-  backendUrl: "https://bandboxical-berneice-nonincarnated.ngrok-free.dev/api"
+  backendUrl: BACKEND_URL
 };
 
 

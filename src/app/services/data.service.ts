@@ -25,6 +25,10 @@ export class DataService {
 
  private apiUrl = 'https://bandboxical-berneice-nonincarnated.ngrok-free.dev/api';
 
+ /* URL PARA DESARROLLO - IMPORTAR ENV.DEVELOPER 
+   private apiUrl = `${environment.backendUrl}`; */
+
+
   constructor(private http: HttpClient) { }
 
   getConsultationResponse(data: ConsultationData): Observable<any> {
