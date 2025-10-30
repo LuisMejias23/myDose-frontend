@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http'; // ¡Importamos HttpClient!
 import { provideServiceWorker } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import { environment } from '../env/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
