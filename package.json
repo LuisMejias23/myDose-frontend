@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:My-Dose": "node dist/my-dose/server/server.mjs"
+    "serve:ssr:My-Dose": "node dist/my-dose/server/server.mjs",
+    "postinstall": "npm install --legacy-peer-deps --no-package-lock"
   },
   "private": true,
   "dependencies": {
