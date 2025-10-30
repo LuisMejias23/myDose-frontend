@@ -1,4 +1,4 @@
-const BACKEND_URL = process.env['NG_APP_BACKEND_URL'] || 'https://bandboxical-berneice-nonincarnated.ngrok-free.dev/api';
+const BACKEND_URL = 'https://mydose-api.onrender.com/api';
 
 export const environment = {
   production: true,
