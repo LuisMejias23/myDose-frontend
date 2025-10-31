@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ConsultationData } from '../interfaces/consultation-data.interface';
+import { environment } from '../../env/environment';
+
 
 
 interface FullConsultationData extends ConsultationData {
@@ -23,7 +25,7 @@ interface EmailData {
 })
 export class DataService {
 
- private apiUrl = 'https://bandboxical-berneice-nonincarnated.ngrok-free.dev/api';
+ private apiUrl = `${environment.backendUrl}`;
 
  /* URL PARA DESARROLLO - IMPORTAR ENV.DEVELOPER 
    private apiUrl = `${environment.backendUrl}`; */
