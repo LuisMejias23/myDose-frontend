@@ -18,7 +18,7 @@ MyDose es una SPA construida con Angular 19 que permite ingresar datos de consul
 - Angular CLI (se recomienda instalar la misma versión usada por el proyecto: ^19.2.13)
 
 ## Instalación
-1. Clona el repositorio:
+1.   Clona el repositorio:
 
 ```bash
 git clone https://github.com/LuisMejias23/myDose-frontend.git

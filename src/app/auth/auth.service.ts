@@ -3,13 +3,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../env/environment.production';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = 'https://bandboxical-berneice-nonincarnated.ngrok-free.dev/api/auth';
+  private apiUrl = `${environment.backendUrl}/auth`;
 
    /* URL PARA DESARROLLO - IMPORTAR ENV.DEVELOPER 
    private apiUrl = `${environment.backendUrl}/auth`; */

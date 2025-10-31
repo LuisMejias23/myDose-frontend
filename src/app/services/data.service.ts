@@ -4,9 +4,6 @@ import { Observable } from 'rxjs';
 import { ConsultationData } from '../interfaces/consultation-data.interface';
 import { environment } from '../../env/environment.production';
 
-
-
-
 interface FullConsultationData extends ConsultationData {
   aiResponse: string;
 }
@@ -22,23 +19,21 @@ interface EmailData {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
+  private apiUrl = `${environment.backendUrl}`;
 
- private apiUrl = `${environment.backendUrl}`;
-
- /* URL PARA DESARROLLO - IMPORTAR ENV.DEVELOPER 
+  /* URL PARA DESARROLLO - IMPORTAR ENV.DEVELOPER 
    private apiUrl = `${environment.backendUrl}`; */
 
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getConsultationResponse(data: ConsultationData): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/consultation`, data);
   }
-  
-  saveConsultation(data:FullConsultationData): Observable<any> {
+
+  saveConsultation(data: FullConsultationData): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/share`, data);
   }
 
@@ -54,7 +49,9 @@ export class DataService {
     return this.http.post<any>(`${this.apiUrl}/send-email`, emailData);
   }
 
-  processConsultation(data: ConsultationData & { email?: string; sendEmail: boolean }): Observable<{ aiResponse: string; emailSent: boolean }> {
+  processConsultation(
+    data: ConsultationData & { email?: string; sendEmail: boolean }
+  ): Observable<{ aiResponse: string; emailSent: boolean }> {
     return this.http.post<{ aiResponse: string; emailSent: boolean }>(
       `${this.apiUrl}/consultation`,
       data
