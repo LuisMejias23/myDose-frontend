@@ -88,7 +88,7 @@ export class FormDoseComponent implements OnInit {
       email: this.userEmail ?? undefined,
 
      
-      sendEmail: false,
+      sendEmail: !!this.userEmail,
     };
 
     this.dataService.processConsultation(dataToSend).subscribe({
@@ -97,7 +97,7 @@ export class FormDoseComponent implements OnInit {
         this.showModal.set(true);
 
         // MANEJO DE ESTADO DE ENVÍO DE CORREO (Ahora que la bandera es obligatoria si hay email)
-        if (dataToSend.sendEmail === true) {
+        if (dataToSend.sendEmail) {
           if (response.emailSent) {
             this.emailStatusMessage =
               '¡El análisis fue enviado a su correo electrónico!';
