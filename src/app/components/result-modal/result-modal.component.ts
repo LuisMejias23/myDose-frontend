@@ -31,7 +31,7 @@ export class ResultModalComponent {
       const emailData = {
         subject: 'Medical Recommendation',
         body: `Hello, here is a medical recommendation for you: ${this.shareUrl()}`,
-        to: 'recipient@example.com', // Aquí se debe reemplazar con el destinatario real
+        to: 'recipient@example.com', 
       };
 
       this.dataService.sendEmail(emailData).subscribe({

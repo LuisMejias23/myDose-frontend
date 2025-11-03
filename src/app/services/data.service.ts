@@ -24,9 +24,7 @@ interface EmailData {
 export class DataService {
   private apiUrl = `${environment.backendUrl}`;
 
-  /* URL PARA DESARROLLO - IMPORTAR ENV.DEVELOPER 
-   private apiUrl = `${environment.backendUrl}`; */
-
+ 
   constructor(private http: HttpClient) {}
 
   getConsultationResponse(data: ConsultationData): Observable<any> {
