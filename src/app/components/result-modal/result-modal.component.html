@@ -1,31 +1,84 @@
-<div class="fixed inset-0 bg-gray-600 bg-opacity-75 overflow-y-auto h-full w-full flex items-center justify-center z-50" (click)="closeModal()">
-  <div class="p-8 max-w-lg mx-auto bg-white rounded-xl shadow-lg relative" (click)="$event.stopPropagation()">
-    <button (click)="closeModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-900 text-2xl font-bold">&times;</button>
-    
-   @if (recommendations()) {
-     <div class="mb-4 p-4 border border-gray-200 rounded-lg shadow-sm bg-gray-50">
-       <p class="text-gray-700 whitespace-pre-line">{{ recommendations() }}</p>
-     </div>
-   }
-     
+<div
+  class="fixed inset-0 bg-gray-600 bg-opacity-75 overflow-y-auto h-full w-full flex items-center justify-center z-50 p-4"
+  (click)="closeModal()"
+>
+  <!-- Contenedor del Modal (Tarjeta) -->
+  <!-- 🛑 CAMBIO 1: w-full en móvil, max-w-xl en escritorio. Añadimos max-h-[90vh] para limitar la altura total y permitir el scroll del MODAL si es necesario. -->
+  <div
+    class="relative w-full max-w-xl mx-auto bg-white rounded-xl shadow-2xl transform transition-all duration-300 max-h-[90vh] flex flex-col"
+    (click)="$event.stopPropagation()"
+  >
+    <!-- Botón de Cerrar (Mantenido) -->
+    <button
+      (click)="closeModal()"
+      class="absolute top-2 right-2 text-gray-500 hover:text-gray-900 text-2xl font-bold p-2"
+    >
+      &times;
+    </button>
 
-   
-@if (shareUrl()) {
-   <div class="mt-6 border-t pt-4">
-      <p class="font-semibold text-gray-700 text-center mb-4">Share this recommendation with the patient:</p>
-      <div class="flex flex-col space-y-2">
-        <button (click)="shareOnWhatsApp()" class="flex items-center justify-center p-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon" class="w-5 h-5 mr-2"> Share on WhatsApp
-        </button>
-        <button (click)="shareOnEmail()" class="flex items-center justify-center p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Email_icon_%28grey%29.svg" alt="Email Icon" class="w-5 h-5 mr-2"> Share via Email
-        </button>
-        <button (click)="copyToClipboard()" class="flex items-center justify-center p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Copy_icon.svg" alt="Copy Icon" class="w-5 h-5 mr-2"> Copy Link
-        </button>
+    <!-- Encabezado/Título para mayor claridad -->
+    <div class="p-5 border-b">
+      <h2 class="text-xl sm:text-2xl font-bold text-indigo-700">
+        Análisis Generado
+      </h2>
+    </div>
+
+    @if (recommendations()) {
+    <!-- 🛑 CAMBIO 2: Área de Contenido de la Recomendación -->
+    <!-- Le damos un padding (p-4), y definimos una altura máxima (max-h-96 o max-h-[60vh]) para que el texto SÍ SCROLLEE, mientras el resto del modal permanece visible. -->
+    <div class="p-4 overflow-y-auto flex-grow max-h-[60vh] sm:max-h-96">
+      <!-- Contenedor interno para el texto -->
+      <div
+        class="mb-4 p-4 border border-gray-200 rounded-lg shadow-sm bg-gray-50"
+      >
+        <p
+          class="text-gray-700 whitespace-pre-wrap leading-relaxed text-sm sm:text-base"
+        >
+          {{ recommendations() }}
+        </p>
       </div>
     </div>
-}
-   
+    }
+
+    <!-- Contenedor de Acciones (Botones) -->
+    <div class="border-t p-4 sm:p-5 flex-shrink-0">
+      @if (shareUrl()) {
+      <p class="font-semibold text-gray-700 text-center mb-4">
+        Compartir esta recomendación:
+      </p>
+      <!-- 🛑 CAMBIO 3: Usamos Grid 2-columnas para móvil y 3 para escritorio para los botones -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <button
+          (click)="shareOnWhatsApp()"
+          class="flex items-center justify-center p-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold"
+        >
+          <!-- Reemplazar las imágenes con iconos SVG o de texto si es posible -->
+          WhatsApp
+        </button>
+
+        <button
+          (click)="shareOnEmail()"
+          class="flex items-center justify-center p-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold"
+        >
+          Email
+        </button>
+
+        <button
+          (click)="copyToClipboard()"
+          class="flex items-center justify-center p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm font-semibold"
+        >
+          Copiar Enlace
+        </button>
+
+        <!-- Botón de Cerrar se puede integrar aquí o en el footer -->
+        <button
+          (click)="closeModal()"
+          class="col-span-2 sm:col-span-3 p-3 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition-colors text-sm font-semibold mt-2"
+        >
+          Cerrar Modal
+        </button>
+      </div>
+      }
+    </div>
   </div>
 </div>
