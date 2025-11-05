@@ -8,7 +8,8 @@ import {
 } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { ResultModalComponent } from '../result-modal/result-modal.component';
-import { AuthService } from '../../auth/auth.service';
+import { environment } from '../../../env/environment.production';
+
 
 @Component({
   selector: 'app-form-dose',
@@ -83,11 +84,7 @@ export class FormDoseComponent implements OnInit {
       temperature: formValue.temperature
         ? parseFloat(formValue.temperature as string)
         : undefined,
-
-      
       email: this.userEmail ?? undefined,
-
-     
       sendEmail: !!this.userEmail,
     };
 
@@ -118,7 +115,7 @@ export class FormDoseComponent implements OnInit {
         this.dataService.saveConsultation(dataToSave).subscribe({
           next: (shareResponse) => {
             const uniqueId = shareResponse.shareId;
-            this.shareUrl.set(`http://localhost:4200/share/${uniqueId}`);
+            this.shareUrl.set(`${environment.backendUrl}/share/${uniqueId}`);
           },
           error: (shareError) => {
             console.error('API Error when saving consultation:', shareError);

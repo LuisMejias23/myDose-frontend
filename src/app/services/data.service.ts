@@ -43,8 +43,9 @@ export class DataService {
     return this.http.get<SharedConsultationData>(`${this.apiUrl}/share/${id}`);
   }
 
-  sendEmail(emailData: EmailData): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/send-email`, emailData);
+  sendRecommendationContentEmail(emailData: ContentEmailData): Observable<any> {
+    // Llamaremos a una NUEVA ruta en el backend, por ejemplo: /send-recommendation-content
+    return this.http.post<any>(`${this.apiUrl}/send-recommendation-content`, emailData);
   }
 
   processConsultation(
