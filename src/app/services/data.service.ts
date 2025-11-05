@@ -18,6 +18,11 @@ interface EmailData {
   to: string;
 }
 
+interface ContentEmailData {
+  recommendationText: string;
+  to: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -44,7 +49,6 @@ export class DataService {
   }
 
   sendRecommendationContentEmail(emailData: ContentEmailData): Observable<any> {
-    // Llamaremos a una NUEVA ruta en el backend, por ejemplo: /send-recommendation-content
     return this.http.post<any>(`${this.apiUrl}/send-recommendation-content`, emailData);
   }
 
