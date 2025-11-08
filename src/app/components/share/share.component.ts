@@ -1,5 +1,3 @@
-// src/app/share/share.component.ts
-
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../../services/data.service';
@@ -25,7 +23,6 @@ export class ShareComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private dataService = inject(DataService);
 
-  // Signals para manejar el estado
   consultation = signal<FullConsultationData | null>(null);
   loading = signal<boolean>(true);
   error = signal<string | null>(null);

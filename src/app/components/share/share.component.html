@@ -1,1 +1,17 @@
-<p>share works!</p>
+@if (loading()){
+  <div>Cargando consulta...</div>
+}
+
+@else if (error()){
+  <div>{{ error() }}</div>
+}
+
+@else if (consultation()){ 
+<div>
+    <h2>Recomendación médica compartida</h2>
+    <p><strong>Síntoma:</strong> {{ consultation()!.symptom }}</p>
+    <p><strong>Edad:</strong> {{ consultation()!.age }}</p>
+    <p><strong>Peso:</strong> {{ consultation()!.weight }}</p>
+    <p><strong>Respuesta de la IA:</strong> {{ consultation()!.aiResponse }}</p>
+  </div>
+}
