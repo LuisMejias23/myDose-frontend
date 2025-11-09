@@ -115,7 +115,7 @@ export class FormDoseComponent implements OnInit {
         this.dataService.saveConsultation(dataToSave).subscribe({
           next: (shareResponse) => {
             const uniqueId = shareResponse.shareId;
-            this.shareUrl.set(`https://my-dose-frontend.vercel.app/api/share/${uniqueId}`);
+            this.shareUrl.set(`https://my-dose-frontend.vercel.app/share/${uniqueId}`);
           },
           error: (shareError) => {
             console.error('API Error when saving consultation:', shareError);
