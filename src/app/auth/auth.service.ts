@@ -3,8 +3,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-//import { environment } from '../../env/environment.production';
-import { environment } from '../../env/environment.development';
+import { environment } from '../../env/environment.production';
 
 
 @Injectable({
