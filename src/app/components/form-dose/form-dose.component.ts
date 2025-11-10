@@ -8,7 +8,8 @@ import {
 } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { ResultModalComponent } from '../result-modal/result-modal.component';
-import { environment } from '../../../env/environment.production';
+//import { environment } from '../../../env/environment.production';
+import { environment } from '../../../env/environment.development';
 
 
 @Component({
@@ -99,7 +100,6 @@ export class FormDoseComponent implements OnInit {
             this.emailStatusMessage =
               '¡El análisis fue enviado a su correo electrónico!';
           } else {
-            // Mensaje si el BACKEND falló al enviar (Ej: Nodemailer error)
             this.emailStatusMessage =
               'Error al enviar el correo. Por favor, inténtelo de nuevo más tarde.';
           }
@@ -115,7 +115,7 @@ export class FormDoseComponent implements OnInit {
         this.dataService.saveConsultation(dataToSave).subscribe({
           next: (shareResponse) => {
             const uniqueId = shareResponse.shareId;
-            this.shareUrl.set(`https://my-dose-frontend.vercel.app/share/${uniqueId}`);
+            this.shareUrl.set(`${environment.frontendUrl}/share/${uniqueId}`);
           },
           error: (shareError) => {
             console.error('API Error when saving consultation:', shareError);

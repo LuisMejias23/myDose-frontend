@@ -14,6 +14,7 @@ export const environment = {
 vapidKey:"BKdYML7XIbaVNKRK-WjSnH_gJcL0oKCRhcP6q74OmQnqGsaFLwkBd4aY2yHKIP1zYXsQVM6GcOTaVb_XCpXbtDY",
   
   backendUrl: "http://localhost:3000/api",
+  frontendUrl: 'http://localhost:4200',
 };
 
 

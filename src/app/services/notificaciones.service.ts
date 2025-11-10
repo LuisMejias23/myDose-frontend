@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { SwPush } from '@angular/service-worker';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../env/environment.production';
-import { Observable } from 'rxjs';
+
 
 interface PushPayload {
   notification: {

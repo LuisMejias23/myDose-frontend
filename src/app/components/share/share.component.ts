@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../../services/data.service';
+import { DatePipe } from '@angular/common';
 
 
 interface FullConsultationData {
@@ -9,12 +10,14 @@ interface FullConsultationData {
   weight: number;
   temperature?: number;
   aiResponse: string;
+  recommendations?: string[];
+  createdAt?: string;
 }
 
 @Component({
   selector: 'app-share',
   standalone: true,
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './share.component.html',
   styleUrl: './share.component.scss'
 })

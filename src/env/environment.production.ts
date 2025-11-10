@@ -1,5 +1,5 @@
 const BACKEND_URL = 'https://mydose-api.onrender.com/api';
-
+const FRONTEND_URL = 'https://my-dose-frontend.vercel.app'
 export const environment = {
   production: true,
   
@@ -16,7 +16,8 @@ export const environment = {
   
 vapidKey:"BKdYML7XIbaVNKRK-WjSnH_gJcL0oKCRhcP6q74OmQnqGsaFLwkBd4aY2yHKIP1zYXsQVM6GcOTaVb_XCpXbtDY",
 
-  backendUrl: BACKEND_URL
+  backendUrl: BACKEND_URL,
+  frontendUrl: FRONTEND_URL
 };
 
 
