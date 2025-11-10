@@ -27,11 +27,13 @@ export class ResultModalComponent {
   }
 
   shareOnWhatsApp() {
-    const message = `Check out my medical recommendation: ${this.shareUrl()}`;
-    window.open(
-      `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`,
-      '_blank'
-    );
+    // 1. Construir el mensaje
+    const message = `Échale un vistazo a mi recomendación médica: ${this.shareUrl()}`;
+    const encodedMessage = encodeURIComponent(message);
+
+    const uriScheme = `whatsapp://send?text=${encodedMessage}`;
+
+    window.open(uriScheme, '_blank');
   }
 
   shareOnEmail() {
@@ -52,13 +54,15 @@ export class ResultModalComponent {
       to: this.userEmail,
     };
 
-    this.dataService.sendRecommendationContentEmail(contentEmailData).subscribe({
-      next: () => alert('Email sent successfully!'),
-      error: (err) => {
-        console.error('Failed to send email:', err);
-        alert('An error occurred while sending the email.');
-      },
-    });
+    this.dataService
+      .sendRecommendationContentEmail(contentEmailData)
+      .subscribe({
+        next: () => alert('Email sent successfully!'),
+        error: (err) => {
+          console.error('Failed to send email:', err);
+          alert('An error occurred while sending the email.');
+        },
+      });
   }
 
   copyToClipboard() {
