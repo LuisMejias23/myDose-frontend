@@ -8,8 +8,8 @@ import {
 } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { ResultModalComponent } from '../result-modal/result-modal.component';
-//import { environment } from '../../../env/environment.production';
-import { environment } from '../../../env/environment.development';
+import { environment } from '../../../env/environment.production';
+//import { environment } from '../../../env/environment.development';
 
 
 @Component({
