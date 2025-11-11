@@ -1,206 +1,155 @@
-MyDose
+💊 MyDose: Asistente de Recomendación Médica Inteligente (Angular & Gemini API)
 
-Aplicación frontend en Angular 19 para gestionar consultas y recomendaciones (myDose).
+🌟 Descripción del Proyecto
 
-## Descripción
-MyDose es una SPA construida con Angular 19 que permite ingresar datos de consulta, obtener una respuesta (mediante una API externa) y compartir resultados. Incluye configuración para SSR, TailwindCSS y un servicio que consume una API REST en `http://localhost:3000/api`.
+MyDose es una aplicación web moderna diseñada para simular un asistente de salud inteligente. Utiliza la potencia del modelo Gemini de Google para analizar síntomas o consultas médicas y generar recomendaciones o análisis informativos en tiempo real, ofreciendo una experiencia de usuario rápida y fluida.
 
-## Características principales
-- Frontend en Angular 19.
-- TailwindCSS para estilos utilitarios.
-- Soporte opcional para SSR (server-side rendering) con Express.
-- Servicios para comunicación con API (consultas y compartir resultados).
-- Componentes organizados por funcionalidad en `src/app/components`.
+Este proyecto es una aplicación Full Stack con una arquitectura desacoplada, demostrando competencia en el manejo de múltiples servicios de nube: el Frontend es una aplicación Angular desplegada en Vercel, y el Backend (API RESTful) está alojado en Render.
 
-## Requisitos
-- Node.js >= 18
-- npm (versión compatible con Node.js instalado)
-- Angular CLI (se recomienda instalar la misma versión usada por el proyecto: ^19.2.13)
+🛑 ADVERTENCIA DE ACCESO (Modo Gratuito)
 
-## Instalación
-1.   Clona el repositorio:
+Debido a que el Backend y la Base de Datos están operando bajo planes gratuitos para el portafolio, existe una restricción de acceso para evitar exceder las cuotas de uso y mantener el servicio en línea.
 
-```bash
-git clone https://github.com/LuisMejias23/myDose-frontend.git
-```
+PARA REALIZAR PRUEBAS DE INICIO DE SESIÓN, REGISTRO Y FUNCIONALIDAD COMPLETA, DEBE UTILIZAR EXCLUSIVAMENTE EL SIGUIENTE CORREO ELECTRÓNICO:
 
-2. Entra en el directorio:
+luismejias.vnzl@gmail.com
 
-```bash
-cd myDose-frontend
-```
+Cualquier intento de registro con un correo diferente puede fallar o llevar a un bloqueo temporal del servicio.
 
-3. Instala dependencias:
+🚀 Arquitectura y Tecnologías
 
-```bash
-npm install
-```
+El proyecto se basa en una arquitectura moderna y desacoplada:
 
-## Desarrollo (servidor local)
-- Iniciar servidor de desarrollo:
+Área
 
-```bash
-ng serve
-```
+Tecnología Principal
 
-- Abrir: http://localhost:4200
+Despliegue/Servicio
 
-- Ejecutar tests unitarios:
+Propósito
 
-```bash
-ng test
-```
+Frontend
 
-## Build y SSR
-- Para generar build de producción:
+Angular + TypeScript
 
-```bash
-ng build --configuration production
-```
+Vercel
 
-- Para servir la versión SSR (si ya generaste la build SSR):
+Interfaz de usuario dinámica y completamente responsiva (Tailwind CSS).
 
-```bash
-node dist/my-dose/server/server.mjs
-```
+Backend (API)
 
-- Script disponible en `package.json`: `serve:ssr:My-Dose`
+Node.js (Express)
 
-## Configuración de la API
-El frontend actualmente apunta por defecto a:
+Render
 
-```
-http://localhost:3000/api
-```
+Servidor de lógica de negocio y proxy para la IA.
 
-Puedes cambiar este valor en `src/app/services/data.service.ts` o migrarlo a `src/environments/environment.ts` para manejar entornos (recomendado).
+Inteligencia Artificial
 
-## Backend
-Este proyecto frontend trabaja junto a un backend que expone una API REST en `/api` (por defecto el `DataService` apunta a `http://localhost:3000/api`).
+Gemini API
 
-Notas sobre el backend:
-- El backend  esta en un repositorio o carpeta separada. clónalo junto con este frontend.
-- Variables comunes que el backend podría necesitar: `PORT` (por defecto 3000), `MONGO_URI` o `DATABASE_URL`, `JWT_SECRET`, etc. Revisa la documentación del backend para valores exactos.
-- Para desarrollar localmente, inicia primero el backend (por ejemplo `npm install` y `npm start` o `node index.js` según el repo) y luego ejecuta el frontend con `ng serve`.
+(Consumo desde el Backend)
 
-Ejemplo (asumiendo backend en `../myDose-backend`):
+Generación del análisis médico y las recomendaciones.
 
-```bash
-# en una terminal
-cd ../myDose-backend
-npm install
-npm start
+Compartir Contenido
 
-# en otra terminal, en este repo
-cd myDose-frontend
-npm install
-ng serve
-```
+Enlaces URI/Mailto
 
-Si el backend corre en otra URL o puerto, actualiza `apiUrl` en `src/app/services/data.service.ts` o usa variables de entorno en `src/environments`.
+(Cliente Angular)
 
-## Estilos e imagen de fondo
-El archivo `src/styles.scss` actualmente carga una imagen de fondo desde una URL externa.
+Integración directa para compartir resultados por WhatsApp y Email.
 
-Notas:
-- Revisa la licencia de la imagen externa antes de usarla en producción.
-- Para usar una imagen local, copia la imagen a `src/assets/` o `public/` y actualiza `src/styles.scss`:
+🛠️ Stack Tecnológico Completo
 
-```scss
-background-image: url('assets/background.jpg');
-```
+Una lista detallada de las herramientas utilizadas para construir MyDose:
 
-## Rutas y componentes importantes
-- `src/app/app.routes.ts`: rutas principales, incluye `share/:id`.
-- `src/app/components`: componentes principales como `form-dose`, `data-dose`, `login`, `register`, `share`.
-- `src/app/services/data.service.ts`: cliente HTTP para la API.
+Frontend (Angular)
 
-## Scripts útiles (package.json)
-- `npm start` -> `ng serve`
-- `npm run build` -> `ng build`
-- `npm run test` -> `ng test`
-- `npm run watch` -> `ng build --watch --configuration development`
-- `npm run serve:ssr:My-Dose` -> `node dist/my-dose/server/server.mjs`
+Framework: Angular (v17+) y TypeScript
 
-## Consejos para despliegue
-- Mover la URL del API a variables de entorno.
-- Asegurar manejo de CORS en el backend.
-- Si usas SSR, desplegar `dist/my-dose` y ejecutar el server con Node.
-- Usar un CDN para activos estáticos pesados si la aplicación lo requiere.
+Estilos: Tailwind CSS para un diseño rápido, modular y responsivo.
 
-## Licencias y recursos
-- Verificar licencias de cualquier recurso externo (p. ej., la imagen en 123rf).
-- Código: agrega una licencia al repo (por ejemplo MIT) si deseas permitir uso libre.
+Iconografía: Lucide Icons para la interfaz de usuario.
 
-## Badges sugeridos
-- Build / CI: (añadir badge de tu CI)
-- Tests: (añadir badge de cobertura de tests)
-- License: (añadir badge de licencia)
+Despliegue: Vercel
 
-## Próximos pasos recomendados
-- Mover `apiUrl` a `src/environments`.
-- Añadir CI (GitHub Actions) para: install + build + test.
-- Añadir E2E tests (Cypress).
-- Mejorar tipado de `DataService` y añadir interceptores HTTP.
-- Añadir CONTRIBUTING.md y LICENSE si esperas contribuciones.
-# MyDose
+Backend (API RESTful)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
+Lenguaje/Entorno: Node.js
 
-## Development server
+Framework: Express.js para la creación de endpoints REST.
 
-To start a local development server, run:
+Base de Datos (Principal): MongoDB para el almacenamiento principal de consultas y datos de la aplicación.
 
-```bash
-ng serve
-```
+Base de Datos (Autenticación): Firestore (Firebase) para la gestión de usuarios y tokens de sesión.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Autenticación: Firebase Auth (gestión de usuarios y tokens de sesión).
 
-## Code scaffolding
+Servicio de IA: Gemini API (Google) para la generación de contenido médico.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Servicio de Email: Resend (asumiendo) para el envío de notificaciones y enlaces.
 
-```bash
-ng generate component component-name
-```
+Despliegue: Render
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+✨ Características Destacadas
 
-```bash
-ng generate --help
-```
+Análisis Inteligente en Tiempo Real: Interacción con la Gemini API para la generación de recomendaciones.
 
-## Building
+Experiencia de Usuario: Diseño limpio y responsivo, garantizando usabilidad en todos los dispositivos.
 
-To build the project run:
+Integración Social Optimizada: Botones funcionales para compartir el análisis por WhatsApp (esquema URI optimizado para móvil) y correo electrónico.
 
-```bash
-ng build
-```
+Demostración de Arquitectura Nube: Uso de Vercel y Render para un CI/CD y hosting de servicios Full Stack.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+⚙️ Configuración del Entorno
 
-## Running unit tests
+Para ejecutar este proyecto localmente, consulta las variables de entorno en:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+src/env/environment.ts: Variables de Producción (usadas en el build de Vercel).
 
-```bash
-ng test
-```
+src/env/environment.development.ts: Variables de Desarrollo (usadas al ejecutar ng serve).
 
-## Running end-to-end tests
+Pasos Rápidos para Ejecución Local
 
-For end-to-end (e2e) testing, run:
+Clonar Repositorio: git clone https://www.youtube.com/watch?v=eQMcIGVc8N0
 
-```bash
-ng e2e
-```
+Instalar Dependencias: npm install
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Ejecutar Servidor: ng serve
 
-## Additional Resources
+La aplicación estará disponible en http://localhost:4200/.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+🌐 Despliegue Continuo (CI/CD)
 
+El proyecto demuestra un flujo de trabajo de despliegue automatizado:
 
+1. Frontend: Angular en Vercel
+
+Proceso: El repositorio está conectado a Vercel. Cada git push a la rama principal (ej. main) inicia automáticamente el build de Producción.
+
+Beneficio: Garantiza que la última versión del código Frontend esté siempre en línea en minutos.
+
+URL de Producción: https://my-dose-frontend.vercel.app (Ejemplo).
+
+2. Backend: API RESTful en Render
+
+Proceso: Render aloja el servidor de la API, manteniéndolo en línea para que el Frontend lo consuma.
+
+Beneficio: Separa la lógica del negocio del cliente, permitiendo escalabilidad y demostrando un diseño de microservicios.
+
+URL de Producción: https://mydose-api.onrender.com/api (Ejemplo).
+
+🤝 Contacto
+
+Luis Mejias
+
+luismejias.vnzl@gmail.com
+
+Whatsapp:
+
++58 412-3093419
+
+Tu Enlace a  Portfolio :
+
+https://github.com/LuisMejias23/myDose-frontend.git
