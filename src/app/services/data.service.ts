@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ConsultationData } from '../interfaces/consultation-data.interface';
-import { environment } from '../../env/environment.production';
+//import { environment } from '../../env/environment.production';
+import { environment } from '../../env/environment';
 
 interface FullConsultationData extends ConsultationData {
   aiResponse: string;

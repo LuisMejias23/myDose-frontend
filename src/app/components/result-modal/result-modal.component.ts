@@ -18,7 +18,7 @@ export class ResultModalComponent {
   private dataService = inject(DataService);
 
   recommendations = input<string | null>(null);
-  onClose = output<void>(); // Evento para cerrar el modal
+  onClose = output<void>(); 
   shareUrl = input<string | null>(null);
   userEmail: string | null = localStorage.getItem('userEmail');
 
@@ -27,7 +27,6 @@ export class ResultModalComponent {
   }
 
   shareOnWhatsApp() {
-    // 1. Construir el mensaje
     const message = `Échale un vistazo a mi recomendación médica: ${this.shareUrl()}`;
     const encodedMessage = encodeURIComponent(message);
 
@@ -65,12 +64,12 @@ export class ResultModalComponent {
       });
   }
 
-  copyToClipboard() {
+ /*  copyToClipboard() {
     if (this.shareUrl()) {
       navigator.clipboard
         .writeText(this.shareUrl() || '')
         .then(() => alert('Link copied to clipboard!'))
         .catch((err) => console.error('Could not copy text: ', err));
     }
-  }
+  } */
 }

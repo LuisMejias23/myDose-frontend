@@ -8,8 +8,8 @@ import {
 } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { ResultModalComponent } from '../result-modal/result-modal.component';
-import { environment } from '../../../env/environment.production';
-//import { environment } from '../../../env/environment.development';
+import { environment } from '../../../env/environment';
+
 
 
 @Component({
@@ -77,7 +77,7 @@ export class FormDoseComponent implements OnInit {
     this.emailStatusMessage = null;
     const formValue = this.formDose.value;
 
-    // Construir los datos para el backend
+   
     const dataToSend = {
       symptom: formValue.symptom as string,
       age: parseFloat(formValue.age as string),
@@ -94,7 +94,7 @@ export class FormDoseComponent implements OnInit {
         this.recommendations.set(response.aiResponse);
         this.showModal.set(true);
 
-        // MANEJO DE ESTADO DE ENVÍO DE CORREO (Ahora que la bandera es obligatoria si hay email)
+        // MANEJO DE ESTADO DE ENVÍO DE CORREO
         if (dataToSend.sendEmail) {
           if (response.emailSent) {
             this.emailStatusMessage =
