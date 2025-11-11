@@ -171,4 +171,7 @@ WhatsApp
 
 Repositorio
 
-https://github.com/LuisMejias23/myDose-frontend.git
+Frontend: https://github.com/LuisMejias23/myDose-frontend.git
+
+Backend: https://github.com/LuisMejias23/myDose-backend.git
+
